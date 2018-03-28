@@ -1,0 +1,44 @@
+$a = "(Люблю)(учиться)";
+$a_len = strlen($a);
+$array = array();
+for ($i=0; $i<$a_len; $i++) {
+    if (($a{$i} == '{') || ($a{$i} == '(') || ($a{$i} == '[')) {
+        array_push($array, $a{$i});
+    }
+    elseif ($a{$i} == '}') {
+        if (isset($array)){
+            $ar_len = (count($array)-1);
+            if ($array[$ar_len] == '{') {
+                array_splice($array, -1);
+            }
+            else {
+                echo 'Ошибка! Скобки расставлены неправильно.';
+                break;
+            }}
+    }
+    elseif ($a{$i} == ')') {
+        if (isset($array)){
+            $ar_len = (count($array)-1);
+            if ($array[$ar_len] == '(') {
+                array_splice($array, -1);
+            }
+            else {
+                echo 'Ошибка! Скобки расставлены неправильно.';
+                break;
+            }}
+    }
+    elseif ($a{$i} == ']') {
+            $ar_len = (count($array)-1);
+            if ($array[$ar_len] == '[') {
+                array_splice($array, -1);
+            }
+            else {
+                echo 'Ошибка! Скобки расставлены неправильно.';
+                break;
+            }
+    }
+    
+}
+    if (count($array)==0) {
+        echo 'Скобки расставлены правильно.';
+    }
